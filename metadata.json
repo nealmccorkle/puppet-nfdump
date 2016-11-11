@@ -1,0 +1,21 @@
+{
+  "name": "puppet-nfdump",
+  "version": "0.0.1",
+  "author": "sensson",
+  "summary": "A simple module to manage nfdump and sfcapd",
+  "license": "Apache-2.0",
+  "source": "https://github.com/sensson/puppet-nfdump/",
+  "project_page": "https://github.com/sensson/puppet-nfdump/",
+  "issues_url": "https://github.com/sensson/puppet-nfdump/issues",
+  "operatingsystem_support": [
+    { "operatingsystem":"CentOS", "operatingsystemrelease":[ "7.0" ] },
+    { "operatingsystem":"RedHat", "operatingsystemrelease":[ "7.0" ] },
+    { "operatingsystem":"Ubuntu", "operatingsystemrelease":[ "16.04" ] },
+    { "operatingsystem":"Debian", "operatingsystemrelease":[ "8.0" ] }
+  ],
+  "dependencies": [
+    { "name": "puppetlabs-stdlib", "version_requirement": ">= 1.0.0" },
+    { "name": "camptocamp-systemd", "version_requirement": ">= 0.4.0" },
+    { "name": "stahnma-epel", "version_requirement": ">= 1.2.2" }
+  ]
+}
