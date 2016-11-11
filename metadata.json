@@ -1,5 +1,5 @@
 {
-  "name": "puppet-nfdump",
+  "name": "sensson-nfdump",
   "version": "0.0.1",
   "author": "sensson",
   "summary": "A simple module to manage nfdump and sfcapd",
