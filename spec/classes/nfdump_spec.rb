@@ -8,7 +8,7 @@ describe 'nfdump' do
           facts
         end
 
-        context "nfdump class without any parameters" do
+        context 'nfdump class without any parameters' do
           it { is_expected.to compile.with_all_deps }
 
           it { is_expected.to contain_class('nfdump') }
@@ -23,8 +23,8 @@ describe 'nfdump' do
     describe 'nfdump class without any parameters on Solaris/Nexenta' do
       let(:facts) do
         {
-          :osfamily        => 'Solaris',
-          :operatingsystem => 'Nexenta',
+          osfamily: 'Solaris',
+          operatingsystem: 'Nexenta'
         }
       end
 

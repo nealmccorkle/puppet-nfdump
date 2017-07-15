@@ -8,7 +8,7 @@ describe 'nfdump::install' do
           facts
         end
 
-        context "nfdump::install class without any parameters" do
+        context 'nfdump::install class without any parameters' do
           let(:pre_condition) do
             'class { "::nfdump": }'
           end
