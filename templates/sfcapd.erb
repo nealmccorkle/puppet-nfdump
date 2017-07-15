@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=forking
 EnvironmentFile=-/etc/sysconfig/sfcapd-<%= scope.lookupvar('source') %>
-ExecStart=/usr/bin/sfcapd -w -D -p <%= scope.lookupvar('port') -%> -u <%= scope.lookupvar('::nfdump::user_name') -%> -g <%= scope.lookupvar('::nfdump::user_name') -%> -B <%= scope.lookupvar('buffer_len') -%> -S 1 -P <%= scope.lookupvar('::nfdump::data_location') -%>/<%= scope.lookupvar('source') -%>.pid -z -T <%= scope.lookupvar('extension_list') -%> -I <%= scope.lookupvar('source') -%> -l <%= scope.lookupvar('::nfdump::data_location') -%>/sources/<%= scope.lookupvar('source') -%><% if scope.lookupvar('repeater_host') != :undef -%> -R <%= scope.lookupvar('repeater_host') -%>/<%= scope.lookupvar('repeater_port') -%><% end %>
+ExecStart=/usr/bin/sfcapd -w -D -p <%= scope.lookupvar('port') -%> -u <%= scope.lookupvar('::nfdump::user_name') -%> -g <%= scope.lookupvar('::nfdump::user_name') -%> -B <%= scope.lookupvar('buffer_len') -%> -S 1 -P <%= scope.lookupvar('::nfdump::data_location') -%>/<%= scope.lookupvar('source') -%>.pid -z -T <%= scope.lookupvar('extension_list') -%> -I <%= scope.lookupvar('source') -%> -l <%= scope.lookupvar('::nfdump::data_location') -%>/sources/<%= scope.lookupvar('source') -%><% if scope.lookupvar('repeater_host') != nil -%><% if scope.lookupvar('repeater_host') != :undef -%>  -R <%= scope.lookupvar('repeater_host') -%>/<%= scope.lookupvar('repeater_port') -%><% end %><% end %>
 PIDFile=<%= scope.lookupvar('::nfdump::data_location') -%>/<%= scope.lookupvar('source') -%>.pid
 KillMode=process
 

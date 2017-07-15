@@ -8,6 +8,6 @@ class nfdump (
   # validate parameters here
   if $user_name == 'root' { fail('Username cannot be set to root') }
 
-  class { '::nfdump::install': } ->
-  Class['::nfdump']
+  class { '::nfdump::install': }
+  -> Class['::nfdump']
 }

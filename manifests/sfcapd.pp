@@ -30,10 +30,12 @@ define nfdump::sfcapd(
       File["${::nfdump::params::defaults_location}/sfcapd-${source}"],
       Package[$::nfdump::package_name]
     ],
+    notify  => Service["sfcapd-${source}"],
   }
 
   service { "sfcapd-${source}":
-    ensure  => running,
-    require => Systemd::Unit_file["sfcapd-${source}.service"],
+    ensure     => running,
+    require    => Systemd::Unit_file["sfcapd-${source}.service"],
+    hasrestart => true,
   }
 }

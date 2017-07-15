@@ -21,7 +21,7 @@ RSpec.configure do |c|
           on host, 'dpkg -i /tmp/puppetlabs-release-pc1-xenial.deb'
           on host, 'apt-get update'
           install_package(host, 'puppet-agent')
-          
+
           # Sorry, it's a symlink
           on host, 'ln -s /opt/puppetlabs/bin/puppet /usr/bin/puppet'
           on host, 'puppet --version'
@@ -36,10 +36,10 @@ RSpec.configure do |c|
       end
 
       install_package(host, 'rsync')
-      rsync_to(host, fixture_modules, '/etc/puppet/modules/')
+      rsync_to(host, fixture_modules, '/opt/puppetlabs/puppet/modules')
     end
 
     # Install module and dependencies
-    puppet_module_install(:source => proj_root, :module_name => 'nfdump')
+    puppet_module_install(source: proj_root, module_name: 'nfdump')
   end
 end
