@@ -35,7 +35,7 @@ define nfdump::sfcapd(
 
   service { "sfcapd-${source}":
     ensure     => running,
-    require    => Systemd::Unit_file["sfcapd-${source}.service"],
+    require    => [ Exec['systemctl-daemon-reload'], Systemd::Unit_file["sfcapd-${source}.service"] ],
     hasrestart => true,
   }
 }
