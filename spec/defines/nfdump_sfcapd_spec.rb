@@ -44,7 +44,7 @@ describe 'nfdump::sfcapd', :type => :define do
 
         end
 
-        context "nfdump::sfcapd with parameters" do
+        context "nfdump::sfcapd with the source parameter set" do
           # Source overrides our title
           let(:params) {{
             :source => 'sw2'
