@@ -24,7 +24,8 @@ describe 'nfdump::sfcapd', :type => :define do
           it { is_expected.to contain_file('/data/nfdump/sources/sw1').that_requires('User[sflow]') }
 
           it { is_expected.to contain_systemd__unit_file('sfcapd-sw1.service') }
-          it { is_expected.to contain_systemd__unit_file('sfcapd-sw1.service').with_content(/\/usr\/bin\/sfcapd -w -D -p/) }
+          it { is_expected.to contain_systemd__unit_file('sfcapd-sw1.service').with_content(/\/usr\/bin\/sfcapd -w -D -p 6343 -u sflow -g sflow -B 200000 -S 1 -P \/data\/nfdump\/sw1.pid -z -T all -I sw1 -l \/data\/nfdump\/sources\/sw1/) }
+          it { is_expected.to contain_systemd__unit_file('sfcapd-sw1.service').without_content(/-R/) }
           it { is_expected.to contain_systemd__unit_file('sfcapd-sw1.service').that_requires('File[/data/nfdump/sources/sw1]') }
 
           it { is_expected.to contain_service('sfcapd-sw1') }
@@ -61,6 +62,16 @@ describe 'nfdump::sfcapd', :type => :define do
           when 'Debian'
             it { is_expected.to contain_file('/etc/default/sfcapd-sw2') }
           end
+        end
+
+        context "nfdump::sfcapd with repeater host set" do
+          # Source overrides our title
+          let(:params) {{
+            :repeater_host => '192.168.124.125'
+          }}
+
+          it { is_expected.to compile.with_all_deps }
+          it { is_expected.to contain_systemd__unit_file('sfcapd-sw1.service').with_content(/-R 192.168.124.125\/6343/) }
         end
       end
     end 
