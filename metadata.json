@@ -1,6 +1,6 @@
 {
   "name": "sensson-nfdump",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "sensson",
   "summary": "A simple module to manage nfdump and sfcapd",
   "license": "Apache-2.0",
