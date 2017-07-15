@@ -31,6 +31,7 @@ describe 'nfdump::sfcapd', type: :define do
           it { is_expected.to contain_service('sfcapd-sw1') }
           it { is_expected.to contain_service('sfcapd-sw1').with_ensure('running') }
           it { is_expected.to contain_service('sfcapd-sw1').that_requires('Systemd::Unit_file[sfcapd-sw1.service]') }
+          it { is_expected.to contain_service('sfcapd-sw1').that_requires('Exec[systemctl-daemon-reload]') }
 
           case facts[:osfamily]
           when 'RedHat'
