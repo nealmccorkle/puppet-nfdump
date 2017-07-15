@@ -36,7 +36,7 @@ RSpec.configure do |c|
       end
 
       install_package(host, 'rsync')
-      rsync_to(host, fixture_modules, '/etc/puppet/modules/')
+      rsync_to(host, fixture_modules, '/opt/puppetlabs/puppet/modules')
     end
 
     # Install module and dependencies
