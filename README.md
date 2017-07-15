@@ -14,7 +14,7 @@ The following example will install nfdump and sets up a single sfcapd process.
 
 ```
 class { '::nfdump':
-	$data_location = '/data/nfdump'
+  $data_location = '/data/nfdump'
 }
 ::nfdump::sfcapd { 'sw1':
   port => 6343,
